@@ -1,5 +1,6 @@
-let Turn = false
 let Range = 0
+let Turn = false
+basic.showString(maqueen.IR_read_version())
 basic.forever(function () {
     music.playMelody("C5 G - - - G - - ", 120)
     Turn = true
@@ -9,7 +10,7 @@ basic.forever(function () {
         } else {
             Range = maqueen.Ultrasonic(PingUnit.Centimeters)
             if (Range > 1) {
-                maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 49)
+                maqueen.motorRun(maqueen.Motors.All, maqueen.Dir.CW, 140)
             } else {
                 if (Turn) {
                     maqueen.servoRun(maqueen.Servos.S1, 90)
@@ -20,4 +21,5 @@ basic.forever(function () {
         }
         Turn = !(Turn)
     }
+    maqueen.motorStop(maqueen.Motors.All)
 })
